@@ -156,7 +156,7 @@
 					}
 				}
 			}
-			plan();
+			document.getElementById('Plan').style.visibility = "visible";
 			}
 		
 		function makeCal(){
