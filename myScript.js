@@ -1,5 +1,5 @@
 	var allTasks = [[],[],[],[],[]];
-	var hoursLeft = 23;
+	var hoursLeft = 24;
 	var sleepHrs = 0;
 	var schoolHrs = 0;
 	var start = 11;
@@ -122,7 +122,7 @@
 			document.getElementById('Plan').style.visibility = "hidden";
 			
 			//calculating time left in the day
-			hoursLeft = 23 - parseInt(sleepHrs) - parseInt(schoolHrs);
+			hoursLeft = 24 - parseInt(sleepHrs) - parseInt(schoolHrs);
 			for (i=0; i<allTasks.length; i++){
 				for(j=0; j<allTasks[i].length; j++){
 					var currentDuration = parseInt(allTasks[i][j][1]);
@@ -171,7 +171,7 @@
 			var cell1 = row.insertCell(0);
 			var cell2 = row.insertCell(1);
 			var cell3 = row.insertCell(2);
-			end = (start%12 + parseInt(sleepHrs));
+			end = (start + parseInt(sleepHrs));
 			if(end >= 12){
 				if(startM == "AM"){
 					endM = "PM";
@@ -210,7 +210,7 @@
 				var cell1= row2.insertCell(0);
 				var cell2 = row2.insertCell(1);
 				var cell3 = row2.insertCell(2);
-				end = (start%12 + schoolHrs);
+				end = (parseInt(start) + parseInt(schoolHrs));
 				startM = "AM";
 				
 				if(end >= 12){
