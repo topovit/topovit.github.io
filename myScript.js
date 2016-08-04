@@ -13,6 +13,7 @@
 	var sleepEnabled = true;
 	var taskEnabled = true;
 	var schoolEnabled = true;
+	var morningBreak = 0;
 		
 		function bubbleSort(a)
 		{
@@ -116,13 +117,22 @@
 			}
 		
 		function plan(){
+			if (schoolArray[0] >0){
+			schoolTime = parseInt(schoolTime);
+			sleepHrs = parseInt(sleepHrs);
+			bedTime = parseInt(bedTime);
+			schoolHrs = parseInt(schoolHrs);
+			morningBreak = schoolTime - (sleepHrs + bedTime)%12;
+			}else{
+				morningBreak = 1;
+			}
 			document.getElementById("add1").style.visibility="hidden";
 			document.getElementById('TaskForm').style.visibility = "hidden";
 			document.getElementById('Task').style.visibility = "hidden";
 			document.getElementById('Plan').style.visibility = "hidden";
 			
 			//calculating time left in the day
-			hoursLeft = 24 - parseInt(sleepHrs) - parseInt(schoolHrs);
+			hoursLeft = 24 - sleepHrs - schoolHrs - morningBreak;
 			for (i=0; i<allTasks.length; i++){
 				for(j=0; j<allTasks[i].length; j++){
 					var currentDuration = parseInt(allTasks[i][j][1]);
@@ -157,6 +167,7 @@
 				}
 			}
 			document.getElementById('Plan').style.visibility = "visible";
+
 			}
 		
 		function makeCal(){
